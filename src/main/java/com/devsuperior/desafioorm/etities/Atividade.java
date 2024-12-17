@@ -78,4 +78,12 @@ public class Atividade {
         this.preco = preco;
     }
 
+    public void setCategoria(Categoria c1) {
+        throw new UnsupportedOperationException("Unimplemented method 'setCategoria'");
+    }
+
+    public List<Bloco> getBlocos() {
+        throw new UnsupportedOperationException("Unimplemented method 'getBlocos'");
+    }
+
 }
