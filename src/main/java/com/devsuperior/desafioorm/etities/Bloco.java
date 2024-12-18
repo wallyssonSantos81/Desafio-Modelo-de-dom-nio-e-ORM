@@ -16,14 +16,14 @@ public class Bloco {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
     private Instant inicio;
     protected Instant fim;
 
     public Bloco() {
     }
 
-    public Bloco(Instant inicio, Instant fim) {
+    public Bloco(Long id, Instant inicio, Instant fim) {
+        this.id = id;
         this.inicio = inicio;
         this.fim = fim;
     }

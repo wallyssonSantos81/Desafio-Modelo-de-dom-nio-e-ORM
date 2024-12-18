@@ -1,5 +1,4 @@
 package com.devsuperior.desafioorm.etities;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +11,6 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
 
 @Entity
 @Table(name = "tb_atividade")
@@ -27,7 +25,7 @@ public class Atividade {
 
     @ManyToOne
     @JoinColumn(name = "categoria_id")
-    private Atividade categoria;
+    private Categoria categoria;
 
     @OneToMany
     private List<Bloco> blocos = new ArrayList<>();
@@ -35,16 +33,18 @@ public class Atividade {
     @ManyToMany(mappedBy = "atividades")
     private List<Participante> participantes = new ArrayList<>();
 
-
     public Atividade() {
-    }       
+    }
 
-    public Atividade(Long id, String nome, String descricao, Double preco) {
+    public Atividade(Long id, String nome, String descricao, Double preco, Categoria categoria) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
         this.preco = preco;
+        this.categoria = categoria;
     }
+
+    // Getters e Setters
 
     public Long getId() {
         return id;
@@ -78,12 +78,19 @@ public class Atividade {
         this.preco = preco;
     }
 
-    public void setCategoria(Categoria c1) {
-        throw new UnsupportedOperationException("Unimplemented method 'setCategoria'");
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
     public List<Bloco> getBlocos() {
-        throw new UnsupportedOperationException("Unimplemented method 'getBlocos'");
+        return blocos;
     }
 
+    public void setBlocos(List<Bloco> blocos) {
+        this.blocos = blocos;
+    }
 }
